@@ -1,0 +1,20 @@
+{% extends "base.html"%}
+
+{% block title %}
+    {{ site_title }} - All Authors
+{% endblock %}
+{% block page_title %}
+    <h1>Authors</h1>
+{% endblock page_title %}
+{% block content01 %}
+     <ul>
+         {% for authors in authorList|sort() %}
+            {% for _authors in dict_authors %}
+                {% if authors ==  _authors.name %}
+                    <ul><a href="/author/{{ _authors.id }}/"> {{ _authors.name }}</a></ul>
+                {% endif %}
+            {% endfor %}
+         {% endfor %}
+     </ul>
+     <br><br><br><br><br><br><br><br> <!-- leave this because otherwise the page gets cut off short -->
+{% endblock content01 %}

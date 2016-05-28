@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link rel="shortcut icon" href="/static/favicon_dlc.ico" type="image/x-icon" />
+{% block head %}
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/styles.css" />
+    <title>{% block title %}{% endblock %}</title>
+{% endblock %}
+</head>
+<body>
+<div class="wrapper">
+
+
+    <div class = "header">
+    {% block header %}{% endblock %}
+     <div class="logo">
+        {% block logo %}
+        {% endblock logo %}
+    </div>
+    </div>
+
+    <div class ="nav_menu">
+    {% block nav_menu %}
+        <div class="nav_links">
+            <a href = '/'> Home </a>
+            <a href = '/authors/'> Authors </a>
+            <a href = '/books/'> Books </a>
+        </div>
+    {% endblock nav_menu %}
+    </div>
+
+
+    <div class = "content_wrapper">
+        <div class = "page_title">
+        {% block page_title%}{% endblock page_title %}
+        </div>
+        <!-- Standard page content -->
+        <div class = "content01">
+        {% block content01 %}{% endblock %}
+        </div>
+        <!-- Homepage image content -->
+        <div class = "content02">
+        {% block content02 %}{% endblock %}
+        </div>
+        <!-- Homepage text content -->
+        <div class = "content03">
+        {% block content03 %}{% endblock %}
+        </div>
+        <div class = "content04">
+        {% block content04 %}{% endblock %}
+        </div>
+        <div class = "content05">
+        {% block content05 %}{% endblock %}
+        </div>
+        <div class = "content06">
+        {% block content06 %}{% endblock %}
+        </div>
+    </div>
+
+    <div class = "footer">
+        <div class ="footer_content">
+        {% block footer %}Copyright © {{ currentYear }} Jared.W, Joel.B, Andres.C, Justin.C, & Alexander. M. All rights reserved | Design by AbM Design C.O.{% endblock %}
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,188 @@
+/**************************************************************** 
+    Base HTML Styling 
+*****************************************************************/
+html,
+body {
+    margin:0;
+    padding:0;
+    height:100%;
+    background: url("backgroundTexture.png") center repeat #e0e0e0;
+    font-family: montserrat, "Arial Black", Gadget, sans-serif;
+}
+blockquote {
+    font-style: italic;
+    font-size: 10pt;
+    text-align: center;
+}
+
+/**************************************************************** 
+    Link Styling 
+*****************************************************************/
+
+a:link {
+    color:#25282b;
+    text-decoration: none;
+}
+a:visited{
+    color: #234b71;
+    text-decoration: none;
+}
+a:hover{
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/**************************************************************** 
+    Header Styling
+ *****************************************************************/
+
+.header {
+    text-align: center;
+    padding:1.3em;
+    background: url("denim.png") center repeat #3a3f47;
+    height: 6em;
+}
+.logo{
+
+    background: url("DLC_logo.png") no-repeat left top;
+    width: 100%;
+    display: block;
+    max-width: 20em;
+    margin: -3em auto;
+    height: 9.375em;
+    position: relative;
+    z-index: 1000;
+}
+/**************************************************************** 
+    Navigation Menu Styling 
+*****************************************************************/
+
+.nav_menu{
+    background-color: #25282b;
+    font-family: montserrat, "Arial Black", Gadget, sans-serif;
+    height: 4em;
+    width: 100%;
+}
+.nav_links{
+    word-spacing: 1em;
+    text-align: center;
+    font-size: 13pt;
+    color: #e0e0e0;
+    padding: 1.3em 0em 0em 0em;
+}
+.nav_links a:link{
+    color: #ffffff;
+    text-decoration: none;
+}
+.nav_links a:visited{
+    color: #ffffff;
+    text-decoration: none;
+}
+.nav_links a:hover{
+    color: #3a3f47;
+    text-decoration: none;
+}
+
+/**************************************************************** 
+    Content Styling 
+*****************************************************************/
+
+.page_title{
+    text-align: center;
+    text-decoration: underline;
+    margin: -0.5em auto;
+    width: 90%;
+    height: 4em;
+    padding: 0.1em 0.1em 0em 0.1em;
+    font-family: montserrat, "Arial Black", Gadget, sans-serif;
+    /*border-bottom-left-radius: 2em;
+    border-bottom-right-radius: 2em;
+    color: #ffffff;
+    border: solid 0.3em #25282b;
+    background: #25282b;
+    margin-top: -1.85em;
+    */
+}
+
+
+
+.wrapper{
+    min-height: 100%;
+    position: relative;
+}
+
+.content_wrapper {
+    min-height: 100%;
+    padding-bottom: 5em;   /* Height of the footer */
+}
+.content01{
+    line-height: 200%;
+    margin-left: 4em;
+    margin-right: 4em;
+    max-width: 50%;
+    padding-top: 2.5em;
+}
+.content02{
+    align-content: left;
+    margin-right: 0em;
+    max-width: 500%;
+}
+.content03{
+    margin-left: -3em;
+}
+.content04{
+    text-align: center;
+}
+.content_home_image{
+    display: none;
+}
+
+@media screen and (min-width: 1100px) {
+    .content_home_image {
+        display: block;
+        margin-top: -4em;
+        margin-left: 23%;
+        padding-right: 5em;
+    }
+}
+
+.content_home_text{
+    text-align: center;
+    margin-top: -5em;
+    max-width: 22em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (min-width: 1100px) {
+    .content_home_text{
+        margin-top: -15em;
+        margin-left: 47%;
+        text-align: center;
+        max-width: 22em;
+    }
+}
+.content_home_welcome{
+    margin-bottom: -1em;
+    text-align: center;
+}
+
+/**************************************************************** 
+    Footer Styling 
+*****************************************************************/
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 5em;   /* Height of the footer */
+    background: #25282b;
+}
+.footer_content{
+    padding: 3.5em 0em 0em 0em;
+    text-align: center;
+    font-family: montserrat, "Arial Black", Gadget, sans-serif;
+    font-size: 8pt;
+    color: #e0e0e0;
+    width: 100%;
+}

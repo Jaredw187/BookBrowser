@@ -1,0 +1,56 @@
+{% extends "base.html"%}
+
+{% block title %}
+    {% for book in dict_books%}
+         {% if bid == book.id %}Book - {{ book.id }}{% endif %}
+     {% endfor %}
+{% endblock %}
+
+{% block page_title %}
+  {% for book in dict_books%}
+         {% if bid == book.id %}
+            <h1>Book - {{ book.id }}</h1>
+         {% endif %}
+     {% endfor %}
+{% endblock page_title %}
+
+{% block content01 %}
+    {%  for books in dict_books %}
+        {% if bid == books.id %}
+            Title: {{ books.title }} <br>
+            Author(s):
+            {% for author in dict_authors %}
+                {% if author.id ==  books.authors|replace('[', '') | replace(']','') | replace('\'', '') %}
+                    <a href = '/author/{{ author.id }}/'>{{ author.name }}</a>
+                {% endif %}
+            {% endfor %}
+            <br>
+            Cover Images (if applicable):
+            <ul>
+            <div class="content02">
+            {% for edition in books.editions %}
+                <img src="http://covers.openlibrary.org/b/id/{{ edition.cover }}-M.jpg">
+            {% endfor %}
+            </div>
+            </ul>
+            Subject(s):
+            <div class="content03">
+            <ul>
+            {% for subject in books.subjects %}
+                <ul>{{ subject|replace('[', '') | replace(']','') | replace('\'', '') }}</ul>
+            {% endfor %}
+            </ul>
+            </div>
+
+            Editions:
+            <div class="content03">
+            <ul>
+            {% for edition in books.editions|sort(attribute = 'publish_date') %}
+                <ul> Edition ID: <a href = '/books/{{ bid }}/editions/{{ edition.id }}/'>{{ edition.id}} ({{ edition.publish_date }})</a></ul>
+            {% endfor %}
+            </ul>
+            </div>
+        {% endif %}
+    {% endfor %}
+
+{% endblock content01 %}

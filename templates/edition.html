@@ -1,0 +1,90 @@
+{% extends "base.html"%}
+
+{% block title %}
+    {{ editionID }}
+{% endblock title %}
+
+{% block page_title %}
+  <div text align="center">
+    <h1>Book: {{ bookID }} <br> Edition: {{ editionID }} </h1>
+    </div>
+{% endblock page_title %}
+
+{% block content01 %}
+    <ul>
+    {% for books in dict_books %}
+        {% if bookID == books.id %}
+            {% for edition in books.editions|sort(attribute = 'publish_date') %}
+                {% if editionID == edition.id %}
+                    Edition ID: {{ edition.id }}
+                    <ul>Title:
+                            {% if edition.title == null %} Null {% endif %}
+                            {{ edition.title }}
+                        </ul><ul> Sub Title:
+                            {% if edition.subtitle == null %} Null {% endif %}
+                            {{ edition.subtitle }}
+                        </ul><ul> Authors:
+                            {% if edition.authors == null %} Null {% endif %}
+                            {% for author in dict_authors %}
+                                {% if author.id == null %} Null {% endif %}
+                                {% if author.id ==  edition.authors|replace('[', '') | replace(']','') | replace('\'', '') %}
+                                    <a href = '/author/{{ author.id }}/'>{{ author.name }}</a>
+                                {% endif %}
+                            {% endfor %}
+                        </ul><ul>Cover Image:
+                            {% if edition.cover == null %} Null {% endif %} <br>
+                            <img src="http://covers.openlibrary.org/b/id/{{ edition.cover }}-M.jpg">
+                        </ul><ul>Publisher:
+                            {% if edition.publishers == null %} Null {% endif %}
+                            {{ edition.publishers |replace('[', '') | replace(']','') | replace('\'', '') }}
+                        </ul><ul>Date:
+                            {% if edition.publish_date == null %} Null {% endif %}
+                            {{ edition.publish_date    |replace('[', '') | replace(']','') | replace('\'', '') }}
+                        </ul><ul>Pages:
+                            {% if edition.pages == null %} Null {% endif %}
+                            {{ edition.pages          |replace('[', '') | replace(']','') | replace('\'', '') }}
+                        </ul><ul>Isbn 10:
+                            {% if edition.isbn_10 == null %} Null {% endif %}
+                            {{ edition.isbn_10      |replace('[', '') | replace(']','') | replace('\'', '') }}
+                        </ul><ul>Isbn 13:
+                            {% if edition.isbn_13 == null %} Null {% endif %}
+                            {{ edition.isbn_13      |replace('[', '') | replace(']','') | replace('\'', '') }}
+                        </ul><ul>Identifiers:
+                            {% if edition.identifiers == null %} Null {% endif %}
+                            {{ edition.identifiers|replace('[', '') | replace(']','') | replace('\'', '') }}
+                        </ul><ul>LC_Class:
+                            {% if edition.lc_class == null %} Null {% endif %}
+                            {{ edition.lc_class }}
+                        </ul><ul>Subjects:
+                            {% if edition.subject == null %} Null {% endif %}
+                            {% for subject in edition.subjects %}
+                                <ul>{{subject}}</ul>
+                            {% endfor %}
+                   {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+    </ul>
+    <br><br>
+    <a href = '/book/{{ bookID }}/'> Back to the book </a>
+
+
+{% endblock content01 %}
+
+
+
+
+<!--
+
+The URL /books/‹bid›/editions/‹eid› should result in a page that displays information about that particular edition of the specified book. This should include:
+
+Title
+Subtitle
+Author(s), by name; each author's name should be a link to their author page.
+Subject(s), if available
+lc_class, the Library of Congress call number(s), if available
+ISBN numbers (isbn_10, isbn_13)
+Publishers
+A link back to the Book page for the book
+
+-->

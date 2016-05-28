@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+   {% for authors in dict_authors %}
+         {% if aid == authors.id %}Authors - {{ authors.name }}{% endif %}
+     {% endfor %}
+{% endblock title%}
+
+{% block page_title %}
+   {% for authors in dict_authors %}
+         {% if aid == authors.id %}
+            <h1>{{ authors.name }}</h1>
+         {% endif %}
+     {% endfor %}
+{% endblock page_title %}
+
+{% block content01 %}
+        {% for authors in dict_authors %}
+            {% if aid == authors.id %}
+
+            Personal Name:
+                {% if authors.personal_name == null %}
+                    Null
+                {% endif %}
+                    {{ authors.personal_name }} <br> <br>
+
+                Alternate Name(s):
+                {% if authors.alternate_names == null %}
+                     Null
+                {% endif%}
+                <ul>{{ authors.alternate_names| replace('[', '') | replace(']','') | replace('\'', '') }}</ul>
+
+
+                Birth Date:
+                {% if authors.birth_date == null %}
+                    Null
+                {% endif %}
+                    {{ authors.birth_date }}<br> <br>
+
+                Death Date:
+                {% if authors.death_date == null %}
+                    Null
+                {% endif %}
+                    {{ authors.death_date }} <br> <br>
+
+
+
+                Biography:
+                {% if authors.bio == null %}
+                    Null
+                {% endif %}
+                    {{ authors.bio }} <br> <br>
+
+
+                Photos:
+                {% if authors.photos == null %}
+                    Photos: Null
+                {% endif %}
+                    {{ authors.photos }}<br> <br>
+
+
+                Latest Revisions:
+                {% if authors.latest_revision == null %}
+                    Null
+                {% endif %}
+                {{ authors.latest_revision }}<br> <br>
+
+            {% endif %}
+        {% endfor %}
+        Books by this Author:
+        <ul>
+        {% for books in dict_books|sort(attribute = 'title') %}
+            {% if books.authors|replace('[', '')|replace(']','')|replace('\'', '') == aid %}
+                <ul> <a href = '/book/{{ books.id }}/'> {{ books.title }}</a></ul>
+            {% endif %}
+        {% endfor %}
+        </ul>
+{% endblock content01 %}
+</html>
+
+
+
+
+<!-- If ‹aid› is a valid author ID, then the URL /authors/‹aid› should result in an author page for the author.
+
+     It should display:
+
+        The author's name (as a heading)
+
+        Additional relevant information. For example, some authors have a bio, and that should be displayed.
+            When displaying the bio, insert paragraph breaks where there are blank lines. Blank lines will arise
+            when 2 or more \n characters (or \r\n sequences) appear in a row.
+
+        A list of the books by that author, sorted by title; each title should be a link to that book.
+
+        The author view function should fail with HTTP error 404 if it is given an unknown author ID. -->
+
